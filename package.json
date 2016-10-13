@@ -1,0 +1,38 @@
+{
+  "name": "blynk-tools",
+  "version": "0.0.38",
+  "description": "",
+  "author": "Volodymyr Shymanskyy",
+  "license": "MIT",
+
+  "bin": {
+    "blynk-gateway-ble.js": "bin/blynk-gateway-ble.js",
+    "blynk-gateway-usb.js": "bin/blynk-gateway-usb.js"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "crc": "*",
+    "usb": "*",
+    "serialport": "*",
+    "noble": "*"
+  },
+  "keywords": [
+    "Arduino",
+    "Espruino",
+    "Raspberry Pi",
+    "IoT",
+    "Internet of Things"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vshymanskyy/blynk-tools-js"
+  },
+  "bugs": {
+    "url": "https://github.com/vshymanskyy/blynk-tools-js/issues"
+  }
+}
