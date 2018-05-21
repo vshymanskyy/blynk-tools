@@ -9,13 +9,13 @@ npm install -g blynk-tools
 
 ## Features
 
-- Firmware
+- **Firmware**
   - Extract info tags from firmware binary
   - Replace/Patch info tags
-- Gateway
+- **Gateway**
   - Connect your BLE device to Blynk server
   - Connect your USB device to Blynk server
-- Device *(soon)*
+- **Device** *(soon)*
   - Provision device via WiFi AP
   - Initiate OTA
 
