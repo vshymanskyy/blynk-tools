@@ -3,7 +3,7 @@
 Command-line automation tools for working with Blynk IoT Platform
 
 ## Installation
-```
+```bash
 npm install -g blynk-tools
 ```
 
