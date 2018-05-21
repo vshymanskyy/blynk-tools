@@ -2,6 +2,11 @@
 
 Command-line automation tools for working with Blynk IoT Platform
 
+## Installation
+```
+npm install -g blynk-tools
+```
+
 ## Features
 
 - Firmware
