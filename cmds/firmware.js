@@ -1,5 +1,6 @@
 module.exports = {
-  command: 'device <command>',
-  describe: 'Device management',
-  builder: (yargs) => yargs.commandDir('device')
+  command: 'firmware <command>',
+  describe: 'Firmware binaries processing',
+  aliases: ['fw'],
+  builder: (yargs) => yargs.commandDir('firmware')
 }
