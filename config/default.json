@@ -1,0 +1,9 @@
+{
+  "server": {
+    "host":           "blynk-cloud.com",
+    "http-api-url":   "/",
+    "http-api-port":  80,
+    "hw-port-tcp":    80,
+    "hw-port-ssl":    8441
+  }
+}
