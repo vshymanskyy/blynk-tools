@@ -1,11 +1,13 @@
 const chalk = require('chalk');
-const gateway = require('../../lib/gateway.js')
 const utils = require('../../lib/utils.js')
-const noble = utils.tryRequire('noble');
+
+const SslClient = require('../../lib/gw/ssl-client.js')
+const Ble = utils.tryRequire('../../lib/gw/ble-scanner.js')
 
 module.exports = {
-  command: chalk.blue.bold('ble'),
-  describe: (noble ? 'Redirect Bluetooth LE connections to Blynk server' : chalk.red('[Bluetooth LE unavailable, need to install noble]')),
+  command: 'ble',
+  describe: 'Redirect Bluetooth LE connections to Blynk server' +
+            (Ble ? '' : chalk.red(' [unavailable]')),
   builder: (yargs) => {
     yargs
       .option({
@@ -28,5 +30,11 @@ module.exports = {
 }
 
 function main(argv) {
+
+  if (!Ble) {
+    console.log(`This command requires noble module to be installed.`);
+    return;
+  }
+
   console.log(JSON.stringify(argv))
 }

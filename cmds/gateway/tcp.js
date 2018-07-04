@@ -1,8 +1,7 @@
 const chalk = require('chalk');
-const gateway = require('../../lib/gateway.js')
 
 module.exports = {
-  command: chalk.blue.bold('tcp'),
+  command: 'tcp',
   describe: 'Redirect TCP connections to Blynk server',
   builder: (yargs) => {
     yargs

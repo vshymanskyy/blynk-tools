@@ -1,11 +1,13 @@
 const chalk = require('chalk');
-const gateway = require('../../lib/gateway.js')
 const utils = require('../../lib/utils.js')
-const serial = utils.tryRequire('serialport');
+
+const SslClient = require('../../lib/gw/ssl-client.js')
+const Serial = utils.tryRequire('../../lib/gw/serial.js')
 
 module.exports = {
-  command: chalk.blue.bold('serial'),
-  describe: (serial ? 'Redirect Serial/USB connections to Blynk server' : chalk.red(' [Serial/USB unavailable, need to install serialport]')),
+  command: 'serial',
+  describe: 'Redirect Serial/USB connections to Blynk server' +
+            (Serial ? '' : chalk.red(' [unavailable]')),
   builder: (yargs) => {
     yargs
       .option({
@@ -29,5 +31,11 @@ module.exports = {
 }
 
 function main(argv) {
+  
+  if (!Serial) {
+    console.log(`This command requires serialport module to be installed.`);
+    return;
+  }
+
   console.log(JSON.stringify(argv))
 }
