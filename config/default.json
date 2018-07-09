@@ -1,9 +1,14 @@
 {
-  "server": {
-    "host":           "blynk-cloud.com",
-    "http-api-url":   "/",
-    "http-api-port":  80,
-    "hw-port-tcp":    80,
-    "hw-port-ssl":    8441
+  "servers": [
+    {
+      "host":           "blynk-cloud.com",
+      "http-api-url":   "https://${host}:443",
+      "http-api-insecure": true,
+      "hw-port-tcp":    80,
+      "hw-port-ssl":    8441
+    }
+  ],
+  "default": {
+    "server": "blynk-cloud.com"
   }
 }
