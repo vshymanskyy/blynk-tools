@@ -4,6 +4,7 @@
 
 'use strict';
 
+const _ = require('lodash')
 const chalk = require('chalk')
 const debug = require('debug')('Blynk')
 const Spinner = require('cli-spinner').Spinner;
@@ -11,7 +12,6 @@ const Spinner = require('cli-spinner').Spinner;
 const request = require('request-promise-native')
 
 const config = require('../../lib/configstore.js')
-const { delay } = require('../../lib/utils.js')
 
 module.exports = {
   command: 'add [auth]',
@@ -49,6 +49,10 @@ module.exports = {
 }
 
 async function main(argv) {
+  
+  if (!_.isError(_.attempt(x => config.findDevice(argv.auth)))) {
+    throw new Error(`Device with token ${argv.auth} is already registered`);
+  }
 
   const server = config.findServer(argv.server);
   const rejectUnauthorized = !server['http-api-insecure'];
@@ -74,6 +78,10 @@ async function main(argv) {
     auth: argv.auth,
     name: argv.name || project.name,
     server: server.name,
+  }
+
+  if (!_.isError(_.attempt(x => config.findDevice(device.name)))) {
+    throw new Error(`Device with name ${device.name} is already registered`);
   }
 
   let devices = config.get('devices') || [];
