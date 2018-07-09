@@ -14,10 +14,10 @@ module.exports = {
   describe: 'Set configuration',
   builder: (yargs) => {
     yargs
-      .example('blynk config server', "Display default server config")
-      .example('blynk config server.host test.com', "Set default server hostname")
-      .example('blynk config server \'{host:"test.com"}\'', 'Set default server (JSON)')
-      .example('blynk config device <auth>', 'Set default device')
+      .example('$0 config server', "Display default server config")
+      .example('$0 config server.host test.com', "Set default server hostname")
+      .example('$0 config server \'{host:"test.com"}\'', 'Set default server (JSON)')
+      .example('$0 config device <auth>', 'Set default device')
       /*.positional('name', {
         describe: 'Parameter',
         type: 'string',

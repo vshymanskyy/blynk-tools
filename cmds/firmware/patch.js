@@ -28,7 +28,7 @@ module.exports = {
           nargs: 1,
         },
       })
-      .example('blynk fw patch ./firmware.bin -o ./provisioned.bin --tag="blnkopt" --ssid="" --pass="" --auth=""')
+      .example('$0 fw patch ./firmware.bin -o ./provisioned.bin --tag="blnkopt" --ssid="" --pass="" --auth=""')
   },
   handler: main
 }

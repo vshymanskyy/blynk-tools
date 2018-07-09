@@ -33,9 +33,9 @@ module.exports = {
           nargs: 1,
         },
       })
-      .example('blynk fw info ./firmware.bin', 'Show info tag')
-      .example('blynk fw info ./firmware.bin --tag=blnkopt', 'Show custom tag')
-      .example('blynk fw info ./firmware.bin --fmt=binary -o ./firmware.tag', 'Extract info tag in binary format')
+      .example('$0 fw info ./firmware.bin', 'Show info tag')
+      .example('$0 fw info ./firmware.bin --tag=blnkopt', 'Show custom tag')
+      .example('$0 fw info ./firmware.bin --fmt=binary -o ./firmware.tag', 'Extract info tag in binary format')
 
       /*.positional('firmware', {
         describe: 'Input firmware file',

@@ -31,7 +31,7 @@ module.exports = {
           nargs: 1,
         },
       })
-      .example('blynk gw ble', 'Scan for BLE devices, redirect connections to Blynk server')
+      .example('$0 gw ble', 'Scan for BLE devices, redirect connections to Blynk server')
   },
   handler: main
 }

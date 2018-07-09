@@ -6,7 +6,7 @@
 
 const chalk = require('chalk');
 
-module.exports = {
+module.exports_hidden = {
   command: 'tcp',
   describe: 'Redirect TCP connections to Blynk server',
   builder: (yargs) => {
@@ -27,8 +27,8 @@ module.exports = {
           nargs: 1,
         },
       })
-      .example('blynk gw tcp', 'Listen on port 8080, redirect all incoming connections to Blynk server')
-      //.example('blynk gw tcp --connect="192.168.1.1:80"', 'Connect to specified address, redirect the connection to Blynk server') // TODO
+      .example('$0 gw tcp', 'Listen on port 8080, redirect all incoming connections to Blynk server')
+      //.example('$0 gw tcp --connect="192.168.1.1:80"', 'Connect to specified address, redirect the connection to Blynk server') // TODO
   },
   handler: main
 }

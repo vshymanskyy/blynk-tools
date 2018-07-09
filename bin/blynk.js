@@ -13,7 +13,7 @@ yargs.commandDir('../cmds').demandCommand(1, 'Please specify command to execute'
 //yargs.count('verbose').alias('v', 'verbose');
 //yargs.boolean('silent').alias('s', 'silent');
 
-
+yargs.epilog('Copyright 2017 Volodymyr Shymanskyy')
 yargs.alias('h', 'help');
 yargs.global('version', false);
 yargs.completion('completion', false);

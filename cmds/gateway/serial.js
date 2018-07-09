@@ -31,7 +31,7 @@ module.exports = {
           nargs: 1,
         },
       })
-      .example('blynk gw serial --port=/dev/ttyUSB0', 'Redirect serial connection to Blynk server')
+      .example('$0 gw serial --port=/dev/ttyUSB0', 'Redirect serial connection to Blynk server')
   },
   handler: main
 }
