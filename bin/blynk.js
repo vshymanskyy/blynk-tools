@@ -6,6 +6,7 @@
 
 'use strict';
 
+const chalk = require('chalk')
 const debug = require('debug')('Blynk')
 const yargs = require('yargs');
 const Spinner = require('cli-spinner').Spinner;
@@ -41,14 +42,12 @@ yargs.fail(function(msg, err, yargs) {
     console.error(err.message)
   } else {
     console.error(yargs.help())
-    console.error(msg)
+    console.error(chalk.yellow.bold(msg))
   }
   process.exit(1)
 })
 
-//yargs.recommendCommands();
-
-//yargs.interactive('i');
+yargs.recommendCommands();
 
 //yargs.group(['help', 'verbose', 'silent'], 'Global Arguments:');
 
