@@ -1,5 +1,6 @@
-const chalk = require('chalk');
+const chalk = require('chalk')
 const utils = require('../../lib/utils.js')
+const debug = require('debug')('BLE')
 
 const SslClient = require('../../lib/gw/ssl-client.js')
 const Ble = utils.tryRequire('../../lib/gw/ble-scanner.js')
@@ -35,6 +36,28 @@ function main(argv) {
     console.log(`This command requires noble module to be installed.`);
     return;
   }
+  
+  let scanner = new Ble.BleScanner();
+  scanner.on('started', function(bleConn) {
+    var sslConn = new SslClient({ host: 'test.blynk.cc' });
+
+    sslConn.connect(function() {
+      let login = "\x02\x00\x01\x00\x20" + "5f7a98878c8946c78574a8883b427f4c";
+      sslConn.write(login);
+      bleConn.write(login);
+
+      sslConn.pipe(bleConn);
+      bleConn.pipe(sslConn);
+
+      sslConn.on('end', function() {
+        debug("SSL closed")
+      })
+      bleConn.on('end', function() {
+        debug("BLE closed")
+      })
+
+    });
+  })
 
   console.log(JSON.stringify(argv))
 }
