@@ -1,3 +1,9 @@
+/**
+ * Copyright 2017 Volodymyr Shymanskyy
+ **/
+
+'use strict';
+
 const chalk = require('chalk')
 const utils = require('../../lib/utils.js')
 const debug = require('debug')('BLE')

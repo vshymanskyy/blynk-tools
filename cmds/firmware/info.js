@@ -1,3 +1,9 @@
+/**
+ * Copyright 2017 Volodymyr Shymanskyy
+ **/
+
+'use strict';
+
 const fs = require('fs')
 const firmware = require('../../lib/firmware.js')
 

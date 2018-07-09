@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+/**
+ * Copyright 2017 Volodymyr Shymanskyy
+ **/
+
+'use strict';
+
 const yargs = require('yargs');
 
 yargs.commandDir('../cmds').demandCommand(1, 'Please specify command to execute');
