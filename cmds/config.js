@@ -1,6 +1,8 @@
 const fs = require('fs')
 const config = require('../lib/configstore.js')
 
+const JSON5 = require('json5')
+
 module.exports = {
   command: 'config <name> [value]',
   describe: 'Set configuration',
@@ -26,7 +28,7 @@ const parsers = [
     }
     throw new Error()
   },
-  (val) => JSON.parse(val),
+  (val) => JSON5.parse(val),
   (val) => val,
 ];
 

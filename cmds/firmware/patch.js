@@ -29,32 +29,33 @@ module.exports = {
 
 function main(argv) {
   //console.log(JSON.stringify(argv))
-  
+
   let input = fs.readFileSync(argv.firmware);
-  
+
   let tag = firmware.findTag(input, argv.tag);
   if (!tag) {
     console.error(`Tag '${argv.tag}' not found in ${argv.firmware}`);
     process.exit(1);
   }
-  
+
+  console.log(`Format: ${tag.format}`);
   console.log(`Offset: 0x${tag.offset.toString(16)}`);
   console.log(`Length: ${tag.length}`);
-  
-  let info = firmware.infoParse(tag.data);
-  
+
+  let info = tag.info;
+
   //console.log(JSON.stringify(info, null, '  '));
-  
+
   for (const [key, value] of Object.entries(info)) {
     if (argv.hasOwnProperty(key)) {
       console.log(`${key}: ${value} => ${argv[key]}`);
       info[key] = argv[key]
     }
   }
-  
+
   //console.log(JSON.stringify(info, null, '  '));
 
-  firmware.writeTag(input, tag, firmware.infoFormat(info));
+  let output = tag.write(info);
 
-  fs.writeFileSync(argv.output, input);
+  fs.writeFileSync(argv.output, output);
 }

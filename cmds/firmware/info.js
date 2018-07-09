@@ -42,24 +42,24 @@ module.exports = {
 
 function main(argv) {
   //console.log(JSON.stringify(argv))
-  
+
   let input = fs.readFileSync(argv.firmware);
-  
+
   let tag = firmware.findTag(input, argv.tag);
   if (!tag) {
     console.error(`Tag '${argv.tag}' not found in ${argv.firmware}`);
     process.exit(1);
   }
-  
+
+  console.log(`Format: ${tag.format}`);
   console.log(`Offset: 0x${tag.offset.toString(16)}`);
   console.log(`Length: ${tag.length}`);
-  
+
   let result;
   if (argv.format == 'json') {
-    let info = firmware.infoParse(tag.data);
-    result = JSON.stringify(info, null, '  ');
+    result = JSON.stringify(tag.info, null, '  ');
   } else if (argv.format == 'binary') {
-    result = tag.data;
+    result = firmware.TagBinary.format(argv.tag, tag.info);
   }
   if (argv.output) {
     fs.writeFileSync(argv.output, result);
