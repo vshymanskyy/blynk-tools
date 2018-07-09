@@ -5,10 +5,10 @@
 'use strict';
 
 const chalk = require('chalk');
-const utils = require('../../lib/utils.js')
+const { tryRequire } = require('../../lib/utils.js')
 
 const SslClient = require('../../lib/gw/ssl-client.js')
-const Serial = utils.tryRequire('../../lib/gw/serial.js')
+const Serial = tryRequire('../../lib/gw/serial.js')
 
 module.exports = {
   command: 'serial',

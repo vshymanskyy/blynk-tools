@@ -5,11 +5,11 @@
 'use strict';
 
 const chalk = require('chalk')
-const utils = require('../../lib/utils.js')
-const debug = require('debug')('BLE')
+const debug = require('debug')('Blynk')
+const { tryRequire } = require('../../lib/utils.js')
 
 const SslClient = require('../../lib/gw/ssl-client.js')
-const Ble = utils.tryRequire('../../lib/gw/ble-scanner.js')
+const Ble = tryRequire('../../lib/gw/ble-scanner.js')
 
 module.exports = {
   command: 'ble',
@@ -65,5 +65,4 @@ function main(argv) {
     });
   })
 
-  console.log(JSON.stringify(argv))
 }
