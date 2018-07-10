@@ -15,6 +15,7 @@ module.exports = {
   builder: (yargs) => {
     yargs
       .example('$0 device list')
+      .epilog(`Legend: ${chalk.green.bold('●')} online, ${'○'} offline,  ${chalk.cyan.bold('⇨')} default`)
   },
   handler: main
 }
