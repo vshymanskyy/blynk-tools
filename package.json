@@ -44,11 +44,16 @@
     ]
   },
   "keywords": [
+    "IoT",
+    "Internet of Things",
+    "Blynk",
+    "firmware",
+    "gateway",
+    "bluetooth",
+    "serial",
     "Arduino",
     "Espruino",
-    "Raspberry Pi",
-    "IoT",
-    "Internet of Things"
+    "Raspberry Pi"
   ],
   "repository": {
     "type": "git",
