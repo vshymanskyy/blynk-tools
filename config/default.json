@@ -1,6 +1,7 @@
 {
   "servers": [
     {
+      "name":           "Blynk",
       "host":           "blynk-cloud.com",
       "http-api-url":   "https://${host}:443",
       "http-api-insecure": true,
@@ -9,6 +10,6 @@
     }
   ],
   "default": {
-    "server": "blynk-cloud.com"
+    "server": "Blynk"
   }
 }
