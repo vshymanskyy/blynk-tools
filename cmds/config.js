@@ -4,7 +4,6 @@
 
 'use strict';
 
-const fs = require('fs')
 const config = require('../lib/configstore.js')
 const { tryParse } = require('../lib/utils.js')
 

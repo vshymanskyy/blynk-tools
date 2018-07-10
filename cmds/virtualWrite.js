@@ -4,12 +4,9 @@
 
 'use strict';
 
-const _ = require('lodash')
 const chalk = require('chalk')
 const debug = require('debug')('Blynk')
-const request = require('request-promise-native')
 
-const { tryParse } = require('../lib/utils.js')
 const config = require('../lib/configstore.js')
 
 module.exports = {
@@ -33,6 +30,10 @@ module.exports = {
 }
 
 async function main(argv) {
+  const _ = require('lodash')
+  const request = require('request-promise-native')
+  const { tryParse } = require('../lib/utils.js')
+
   let value = tryParse(argv.value);
 
   if (_.isArray(value)) {

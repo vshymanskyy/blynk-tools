@@ -4,9 +4,6 @@
 
 'use strict';
 
-const fs = require('fs')
-const firmware = require('../../lib/firmware.js')
-
 module.exports = {
   command: 'info <firmware>',
   describe: 'Shows and extracts info tags',
@@ -47,7 +44,8 @@ module.exports = {
 }
 
 function main(argv) {
-  //console.log(JSON.stringify(argv))
+  const fs = require('fs')
+  const firmware = require('../../lib/firmware.js')
 
   let input = fs.readFileSync(argv.firmware);
 

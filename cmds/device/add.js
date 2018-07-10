@@ -4,12 +4,8 @@
 
 'use strict';
 
-const _ = require('lodash')
 const chalk = require('chalk')
 const debug = require('debug')('Blynk')
-const Spinner = require('cli-spinner').Spinner;
-
-const request = require('request-promise-native')
 
 const config = require('../../lib/configstore.js')
 
@@ -49,7 +45,10 @@ module.exports = {
 }
 
 async function main(argv) {
-  
+  const Spinner = require('cli-spinner').Spinner
+  const request = require('request-promise-native')
+  const _ = require('lodash')
+
   if (!_.isError(_.attempt(x => config.findDevice(argv.auth)))) {
     throw new Error(`Device with token ${argv.auth} is already registered`);
   }

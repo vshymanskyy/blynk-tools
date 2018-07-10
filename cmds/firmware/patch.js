@@ -4,9 +4,6 @@
 
 'use strict';
 
-const fs = require('fs')
-const firmware = require('../../lib/firmware.js')
-
 module.exports = {
   command: 'patch <firmware>',
   describe: 'Patch command allows updating an existing info tag in-place, overwriting some values',
@@ -34,7 +31,8 @@ module.exports = {
 }
 
 function main(argv) {
-  //console.log(JSON.stringify(argv))
+  const fs = require('fs')
+  const firmware = require('../../lib/firmware.js')
 
   let input = fs.readFileSync(argv.firmware);
 

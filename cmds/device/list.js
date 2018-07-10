@@ -7,10 +7,6 @@
 const chalk = require('chalk')
 const debug = require('debug')('BLE')
 
-const request = require('request-promise-native')
-const Table = require('cli-table-redemption');
-const Spinner = require('cli-spinner').Spinner;
-
 const config = require('../../lib/configstore.js')
 
 module.exports = {
@@ -24,6 +20,10 @@ module.exports = {
 }
 
 async function main(argv) {
+  const request = require('request-promise-native')
+  const Table = require('cli-table-redemption')
+  const Spinner = require('cli-spinner').Spinner
+
   var table = new Table({
     head: ['Status', 'Name', 'Server', 'Token'],
     style : { compact : true, 'padding-left' : 1, head: ['cyan', 'bold'] }
