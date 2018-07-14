@@ -1,3 +1,13 @@
+[![NPM version](https://img.shields.io/npm/v/blynk-tools.svg)](https://www.npmjs.com/package/blynk-tools)
+[![NPM download](https://img.shields.io/npm/dm/blynk-tools.svg)](https://www.npmjs.com/package/blynk-tools)
+[![GitHub stars](https://img.shields.io/github/stars/vshymanskyy/blynk-tools.svg)](https://github.com/vshymanskyy/blynk-tools)
+[![GitHub issues](https://img.shields.io/github/issues/vshymanskyy/blynk-tools.svg)](https://github.com/vshymanskyy/blynk-tools/issues)
+[![GitHub license](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://github.com/vshymanskyy/blynk-tools)
+
+[![NPM](https://nodei.co/npm/blynk-tools.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/blynk-tools/)
+
+__________
+
 # Blynk Tools
 
 Command-line automation tools for working with Blynk IoT Platform
