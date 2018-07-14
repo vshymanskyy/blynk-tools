@@ -11,6 +11,8 @@ const debug = require('debug')('Blynk')
 const yargs = require('yargs');
 const Spinner = require('cli-spinner').Spinner;
 
+const config = require('../lib/configstore.js');
+
 Spinner.setDefaultSpinnerString(19);
 Spinner.setDefaultSpinnerDelay(100);
 
@@ -52,7 +54,29 @@ yargs.recommendCommands();
 
 //yargs.group(['help', 'verbose', 'silent'], 'Global Arguments:');
 
-let argv = yargs.argv;
+let argv;
+
+// Check for updates
+(async function() {
+  const now = Math.floor(Date.now()/1000);
+  const last = config.get('internal.lastUpdateCheck');
+
+  if (!last || typeof(last) !== 'number' || last-now > 24*60*60) {
+    config.set('internal.lastUpdateCheck', now)
+    try {
+      const semver = require('semver');
+      const pkJson = require('package-json');
+      
+      const latest = await pkJson('blynk-tools')
+      if (semver.gt(latest.version, require('../package.json').version)) {
+        console.error(chalk.yellow.bold('!'), `New version ${latest.version} is available`)
+        console.error(chalk.yellow.bold('!'), 'Update at any time with:', chalk.white.bold('npm install blynk -g'))
+      }
+    } catch(e) {}
+  }
+
+  argv = yargs.argv;
+})()
 
 /*
 yargs.boolean('interactive').alias('i', 'interactive');
