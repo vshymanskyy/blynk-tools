@@ -35,10 +35,10 @@ Now let's check the device status:
 ```sh
 > blynk device list
 ```
-We can now manipulate virtual pins of your devices (you need to ):
+We can now manipulate virtual pins of your devices (you need to specify either device name or auth token):
 ```sh
-> blynk virtualWrite --device=... V0 123
-> blynk virtualRead --device=... V0
+> blynk virtualWrite --device=CoolDevice1 V0 123
+> blynk virtualRead --device=CoolDevice1 V0
 ```
 Many commands in this suite need a `--device` to be specified.  
 It may become cumbersome to specify it each and every time, so let's select the default one:
