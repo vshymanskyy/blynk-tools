@@ -28,7 +28,7 @@ npm install -g blynk-tools
 Register an account using Blynk App, and create a new project.  
 Use the provided auth token to register your device for use in `blynk tools`:
 ```sh
-> blynk device add 1a5c3988d60f477db6bac3417d53f132
+> blynk device add 1a5c3988d60f477db6bac3417d53f132 --name=CoolDevice1
 ```
 You can add several devices. For more info on `device add` command, run `device add --help`.  
 Now let's check the device status:
