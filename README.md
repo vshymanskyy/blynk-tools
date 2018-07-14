@@ -66,7 +66,7 @@ V0 set to [123]
 Many commands in this suite require a `--device` to be specified.  
 It may become cumbersome, so let's select the default device:
 ```sh
-> blynk config default.device CoolDevice1
+> blynk config default.device "CoolDevice1"
 New default.device value: "CoolDevice1"
 ```
 Now `blynk virtualWrite V0 123` works, and you can also see the default device in the device list:
