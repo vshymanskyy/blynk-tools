@@ -71,6 +71,14 @@ let argv;
       if (semver.gt(latest.version, require('../package.json').version)) {
         console.error(chalk.yellow.bold('!'), `New version ${latest.version} is available`)
         console.error(chalk.yellow.bold('!'), 'Update at any time with:', chalk.white.bold('npm install blynk -g'))
+      } else if (!config.get('internal.skipHints')) {
+        const hints = [
+          ['If you like Blynk, give us a github star:', chalk.white.bold('https://github.com/vshymanskyy/blynk-tools')],
+          ['Check out our JS client library:', chalk.white.bold('https://github.com/vshymanskyy/blynk-library-js')],
+          ['Blynk is used by', chalk.white.bold("380'000"), 'people all around the world'],
+          ['Run', chalk.white.bold("blynk --help"), 'to see command options'],
+        ];
+        console.error(chalk.yellow.bold('Hint:'), ...hints[Math.floor(Math.random()*hints.length)])
       }
     } catch(e) {}
   }
