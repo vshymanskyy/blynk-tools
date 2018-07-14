@@ -32,7 +32,7 @@ async function main(argv) {
 
   let devices = config.get('devices');
 
-  if (!devices.length) {
+  if (!devices || !devices.length) {
     throw new Error(`No registered devices.\nYou can add a device using "blynk device add" command.`);
   }
 
