@@ -59,9 +59,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/vshymanskyy/blynk-tools-js"
+    "url": "https://github.com/vshymanskyy/blynk-tools"
   },
   "bugs": {
-    "url": "https://github.com/vshymanskyy/blynk-tools-js/issues"
+    "url": "https://github.com/vshymanskyy/blynk-tools/issues"
   }
 }
