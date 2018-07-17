@@ -61,7 +61,7 @@ async function main(argv) {
     method: 'POST',
     uri: url,
     auth: {
-      user: 'admin@blynk.cc',
+      user: 'admin@blynk.cc', // TODO: use server config
       pass: 'admin',
     },
     formData: {
