@@ -24,7 +24,7 @@ npm install -g blynk-tools
   - Maintain device list
   - Show device status
   - Read/write virtual pins
-  - Provision device via WiFi AP *(soon)*
+  - Provision device WiFi credentials
   - Initiate OTA *(soon)*
 - **Gateway**
   - Connect your BLE devices to the Blynk server
