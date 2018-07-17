@@ -9,11 +9,12 @@ const debug = require('debug')('Blynk')
 
 const config = require('../../lib/configstore.js')
 const { tryRequire } = require('../../lib/utils.js')
-const WiFiSetup = require('../../lib/wifi-setup')
+const WiFiSetup = tryRequire('../../lib/wifi-setup')
 
 module.exports = {
   command: 'setup <AP>',
-  describe: 'Provision Blynk device WiFi credentials',
+  describe: 'Provision Blynk device WiFi credentials' +
+            (WiFiSetup ? '' : chalk.red(' [unavailable]')),
   builder: (yargs) => {
     yargs
       .option({
