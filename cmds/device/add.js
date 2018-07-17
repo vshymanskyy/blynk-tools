@@ -21,16 +21,12 @@ module.exports = {
           describe: 'Auth token',
           nargs: 1,
         },
-      })
-      .option({
         name: {
           alias: ['n'],
           type: 'string',
           describe: 'Device name (defaults to Project Title)',
           nargs: 1,
         },
-      })
-      .option({
         server: {
           type: 'string',
           default: config.get('default.server') || 'Blynk',
