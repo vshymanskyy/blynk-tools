@@ -9,35 +9,26 @@
 const chalk = require('chalk')
 const debug = require('debug')('Blynk')
 const yargs = require('yargs');
-const Spinner = require('cli-spinner').Spinner;
 
 const config = require('../lib/configstore.js');
 
+const Spinner = require('cli-spinner').Spinner;
 Spinner.setDefaultSpinnerString(19);
 Spinner.setDefaultSpinnerDelay(100);
 
+yargs
+  .scriptName('blynk')
+  .commandDir('../cmds').demandCommand(1, 'Please specify command to execute')
+  .epilog('Copyright 2017 Volodymyr Shymanskyy')
+  .alias('h', 'help')
+  .global('version', false)
+  .completion('completion', false)
+  .strict().wrap(Math.min(120, yargs.terminalWidth()))
+  .recommendCommands();
 
-process.on('unhandledRejection', (reason, promise) => {
-  console.error(reason)
-  process.exit(1)
-})
-
-process.on('uncaughtException', (err) => {
-  console.error(err.message)
-  process.exit(1)
-})
-
-yargs.commandDir('../cmds').demandCommand(1, 'Please specify command to execute');
-
+//yargs.group(['help', 'verbose', 'silent'], 'Global Arguments:');
 //yargs.count('verbose').alias('v', 'verbose');
 //yargs.boolean('silent').alias('s', 'silent');
-
-yargs.scriptName('blynk')
-yargs.epilog('Copyright 2017 Volodymyr Shymanskyy')
-yargs.alias('h', 'help');
-yargs.global('version', false);
-yargs.completion('completion', false);
-yargs.strict().wrap(Math.min(120, yargs.terminalWidth()));
 
 yargs.fail(function(msg, err, yargs) {
   if (err) {
@@ -50,9 +41,15 @@ yargs.fail(function(msg, err, yargs) {
   process.exit(1)
 })
 
-yargs.recommendCommands();
+process.on('unhandledRejection', (reason, promise) => {
+  console.error(reason)
+  process.exit(1)
+})
 
-//yargs.group(['help', 'verbose', 'silent'], 'Global Arguments:');
+process.on('uncaughtException', (err) => {
+  console.error(err.message)
+  process.exit(1)
+})
 
 let argv;
 
