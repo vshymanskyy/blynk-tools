@@ -8,6 +8,7 @@ const chalk = require('chalk')
 const debug = require('debug')('Blynk')
 
 const config = require('../../lib/configstore.js')
+const { Spinner } = require('../../lib/utils.js')
 
 module.exports = {
   command: 'ota <firmware>',
@@ -49,7 +50,6 @@ async function main(argv) {
 
   const request = require('request-promise-native');
 
-  const Spinner = require('cli-spinner').Spinner;
   let spinner = new Spinner(chalk.cyan.bold('%s') + '  OTA firmware update...');
   spinner.start();
 

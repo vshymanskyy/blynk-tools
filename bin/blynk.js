@@ -12,10 +12,6 @@ const yargs = require('yargs');
 
 const config = require('../lib/configstore.js');
 
-const Spinner = require('cli-spinner').Spinner;
-Spinner.setDefaultSpinnerString(19);
-Spinner.setDefaultSpinnerDelay(100);
-
 yargs
   .scriptName('blynk')
   .commandDir('../cmds').demandCommand(1, 'Please specify command to execute')
