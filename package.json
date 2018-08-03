@@ -1,9 +1,9 @@
 {
   "name": "blynk-tools",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Tools for working with Blynk IoT Platform",
   "author": "Volodymyr Shymanskyy",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "preferGlobal": true,
   "bin": {
     "blynk": "bin/blynk.js"
