@@ -8,7 +8,7 @@ const chalk = require('chalk')
 const debug = require('debug')('Blynk')
 
 const config = require('../../lib/configstore.js')
-const { tryRequire } = require('../../lib/utils.js')
+const { tryRequire, Spinner } = require('../../lib/utils.js')
 const WiFiSetup = tryRequire('../../lib/wifi-setup')
 
 module.exports = {
@@ -52,20 +52,25 @@ async function main(argv) {
   const device = config.findDevice(argv.device);
   const server = config.findServer(device.server);
 
-  const Spinner = require('cli-spinner').Spinner;
   let spinner = new Spinner(chalk.cyan.bold('%s') + '  Setting up...');
   spinner.start();
 
-  let result = await WiFiSetup.wifiSetup({
-    product: argv.AP,
-    ssid:    argv.ssid,
-    pass:    argv.pass,
-    auth:    device.auth,
-    server:  server['host'],
-    port:    server['hw-port-tcp'],
-  });
+  try {
+    let result = await WiFiSetup.wifiSetup({
+      product: argv.AP,
+      ssid:    argv.ssid,
+      pass:    argv.pass,
+      auth:    device.auth,
+      server:  server['host'],
+      port:    server['hw-port-tcp'],
+    });
+    
+    
+    console.log('\rProvisioning complete. Device should appear online.');
+  } catch(e) {
+    console.log('\rProvisioning failed:', e.message);
+  } finally {
+    spinner.stop();
+  }
   
-  spinner.stop();
-  
-  console.log('\rProvisioning complete. Device should appear online.');
 }
