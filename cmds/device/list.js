@@ -50,14 +50,20 @@ async function main(argv) {
     const rejectUnauthorized = !server['http-api-insecure'];
 
     let isDefault = defaultDevice && (defaultDevice.auth === d.auth);
-    let isConnected = await request({
-      uri: `${server.url}/${d.auth}/isHardwareConnected`,
-      json: true,
-      rejectUnauthorized,
-    });
-
+    
     let status = '';
-    status += isConnected ? chalk.green.bold('●') : '○';
+    
+    try {
+      let isConnected = await request({
+        uri: `${server.url}/${d.auth}/isHardwareConnected`,
+        json: true,
+        rejectUnauthorized,
+      });
+
+      status += isConnected ? chalk.green.bold('●') : '○';
+    } catch (e) {
+      status += '?';
+    }
     status += isDefault ? chalk.cyan.bold('  ⇨') : '';
     table.push([status, d.name, d.server, '...' + d.auth.slice(-6)])
   }

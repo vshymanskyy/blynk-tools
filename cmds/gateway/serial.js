@@ -39,7 +39,7 @@ module.exports = {
 function main(argv) {
   
   if (!Serial) {
-    console.log(`This command requires serialport module to be installed.`);
+    console.error(`This command requires serialport module to be installed.`);
     return;
   }
 

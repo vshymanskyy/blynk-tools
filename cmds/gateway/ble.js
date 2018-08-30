@@ -39,7 +39,7 @@ module.exports = {
 function main(argv) {
 
   if (!Ble) {
-    console.log(`This command requires noble module to be installed.`);
+    console.error(`This command requires noble module to be installed.`);
     return;
   }
   
@@ -48,6 +48,7 @@ function main(argv) {
     var sslConn = new SslClient({ host: 'test.blynk.cc' });
 
     sslConn.connect(function() {
+      // TODO: get from device
       let login = "\x02\x00\x01\x00\x20" + "5f7a98878c8946c78574a8883b427f4c";
       sslConn.write(login);
       bleConn.write(login);
