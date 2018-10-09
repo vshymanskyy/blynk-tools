@@ -63,14 +63,15 @@ async function main(argv) {
       auth:    device.auth,
       server:  server['host'],
       port:    server['hw-port-tcp'],
+      port_ssl:server['hw-port-ssl'],
     });
-    
-    
+
+
     console.log('\rProvisioning complete. Device should appear online.');
   } catch(e) {
     console.log('\rProvisioning failed:', e.message);
   } finally {
     spinner.stop();
   }
-  
+
 }
