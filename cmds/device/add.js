@@ -69,19 +69,16 @@ async function main(argv) {
 
   spinner.stop(true);
 
-  let device = {
-    auth: argv.auth,
-    name: argv.name || project.name,
-    server: server.name,
+  let name = argv.name || project.name || config.newDeviceName();
+
+  if (!_.isError(_.attempt(x => config.findDevice(name)))) {
+    throw new Error(`Device with name ${name} is already registered`);
   }
 
-  if (!_.isError(_.attempt(x => config.findDevice(device.name)))) {
-    throw new Error(`Device with name ${device.name} is already registered`);
-  }
+  config.set(`devices["${name}"]`, {
+    auth:   argv.auth,
+    server: argv.server,
+  });
 
-  let devices = config.get('devices') || [];
-  devices.push(device);
-  config.set('devices', devices);
-
-  console.log(isConnected ? chalk.green.bold('●') : '○', '', device.name);
+  console.log(isConnected ? chalk.green.bold('●') : '○', '', name);
 }

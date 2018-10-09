@@ -32,7 +32,7 @@ async function main(argv) {
 
   let devices = config.get('devices');
 
-  if (!devices || !devices.length) {
+  if (!devices || !Object.keys(devices).length) {
     throw new Error(`No registered devices.\nYou can add a device using "blynk device add" command.`);
   }
 
@@ -43,8 +43,8 @@ async function main(argv) {
 
   let spinner = new Spinner(chalk.cyan.bold('%s') + '  Refreshing device status...');
   spinner.start();
-  
-  for (let d of devices) {
+
+  for (const [name, d] of Object.entries(devices)) {
     
     const server = config.findServer(d.server);
     const rejectUnauthorized = !server['http-api-insecure'];
@@ -65,7 +65,7 @@ async function main(argv) {
       status += '?';
     }
     status += isDefault ? chalk.cyan.bold('  ⇨') : '';
-    table.push([status, d.name, d.server, '...' + d.auth.slice(-6)])
+    table.push([status, name, d.server, '...' + d.auth.slice(-6)])
   }
 
   spinner.stop();
