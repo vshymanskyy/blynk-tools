@@ -4,8 +4,6 @@
 [![GitHub issues](https://img.shields.io/github/issues/vshymanskyy/blynk-tools.svg)](https://github.com/vshymanskyy/blynk-tools/issues)
 [![GitHub license](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://github.com/vshymanskyy/blynk-tools)
 
-[![NPM](https://nodei.co/npm/blynk-tools.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/blynk-tools/)
-
 __________
 
 # Blynk Tools
