@@ -16,6 +16,8 @@ module.exports = {
       .example('$0 config default.device', "Display default device")
       .example('$0 config default.server Blynk',    "Set default server name/hostname")
       .example('$0 config default.device CoolDev1', "Set default device name/auth")
+      .example('$0 config servers', "Show all servers")
+      .example('$0 config devices', "Show all devices")
   },
   handler: main
 }
