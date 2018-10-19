@@ -7,6 +7,7 @@
 const chalk = require('chalk')
 const debug = require('debug')('Blynk')
 
+const api = require('../../lib/api.js')
 const config = require('../../lib/configstore.js')
 const { Spinner } = require('../../lib/utils.js')
 
@@ -31,53 +32,21 @@ module.exports = {
 }
 
 async function main(argv) {
-  
-  const fs = require('fs')
-  const firmware = require('../../lib/firmware.js')
-
-  let input = fs.readFileSync(argv.firmware);
-
-  let tag = firmware.findTag(input, 'blnkinf');
-  if (tag) {
-    debug(`Metainfo: ${ JSON.stringify(tag.info) }`);
-  } else {
-    debug(`Tag 'blnkinf' not found in ${argv.firmware}`);
-  }
 
   const device = config.findDevice(argv.device);
   const server = config.findServer(device.server);
-  const rejectUnauthorized = !server['http-api-insecure'];
-
-  const request = require('request-promise-native');
 
   let spinner = new Spinner(chalk.cyan.bold('%s') + '  OTA firmware update...');
   spinner.start();
 
-  // TODO: This URL should be normalized with other HTTP API
-  let url = `${server.url}/admin/ota/start?token=${device.auth}`;
-  debug('URL:', url);
+  // Login
+  const jar = await api.getSessionCookieJar(server, "admin@blynk.cc", "admin");
 
-  let res = await request({
-    method: 'POST',
-    uri: url,
-    auth: {
-      user: 'admin@blynk.cc', // TODO: use server config
-      pass: 'admin',
-    },
-    formData: {
-      file: {
-        value:  input,
-        options: {
-          filename: 'firmware',
-          contentType: 'application/octet-stream'
-        }
-      },
-      metainfo: tag ? JSON.stringify(tag.info) : undefined
-    },
-    rejectUnauthorized,
-  });
+  // Start OTA
+  const res = await api.startOTA(server, device, jar, argv.firmware);
 
   spinner.stop();
-  
-  console.log('\rOTA initiated.');
+
+  //console.log("Result:", res);
+  console.log('\rOTA started.                           ');
 }
