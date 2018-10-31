@@ -48,16 +48,13 @@ function main(argv) {
 
   let info = tag.info;
 
-  //console.log(JSON.stringify(info, null, '  '));
-
   for (const [key, value] of Object.entries(info)) {
     if (argv.hasOwnProperty(key)) {
-      console.log(`${key}: ${value} => ${argv[key]}`);
       info[key] = argv[key]
     }
   }
 
-  //console.log(JSON.stringify(info, null, '  '));
+  console.log(JSON.stringify(info, null, '  '));
 
   let output = tag.write(info);
 
