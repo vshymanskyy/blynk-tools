@@ -48,10 +48,12 @@ function main(argv) {
 
   let info = tag.info;
 
-  for (const [key, value] of Object.entries(info)) {
-    if (argv.hasOwnProperty(key)) {
-      info[key] = argv[key]
-    }
+  const ignore_keys = ["$0", "_", "firmware", "o", "output", "tag"]
+  const keys = Object.keys(argv).filter(x => !ignore_keys.includes(x));
+
+  for (const key of keys) {
+    delete info[key];
+    info[key] = argv[key];
   }
 
   console.log(JSON.stringify(info, null, '  '));
