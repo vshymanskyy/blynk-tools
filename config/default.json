@@ -1,10 +1,10 @@
 {
   "servers": {
     "_default": {
-      "http-api-url":   "https://${host}:443",
+      "http-api-url":   "https://${host}/api",
       "http-api-insecure": true,
       "hw-port-tcp":    80,
-      "hw-port-ssl":    8441
+      "hw-port-ssl":    443
     },
     "Blynk": {
       "host":           "blynk-cloud.com"
