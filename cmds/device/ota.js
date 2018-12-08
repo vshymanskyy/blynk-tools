@@ -24,6 +24,10 @@ module.exports = {
           describe: 'Registered device name or auth token',
           nargs: 1,
         },
+        secure: {
+          type: 'boolean',
+          default: true,
+        }
       })
       .demandOption(['device'])
       .example('$0 device ota --device=Device1 firmware.bin', 'Flash firmware to Device1')
@@ -43,7 +47,7 @@ async function main(argv) {
   const jar = await api.getSessionCookieJar(server, "admin@blynk.cc", "admin");
 
   // Start OTA
-  const res = await api.startOTA(server, device, jar, argv.firmware);
+  const res = await api.startOTA(server, device, jar, argv.firmware, { isSecure: argv.secure });
 
   spinner.stop();
 
