@@ -1,13 +1,16 @@
 {
   "servers": {
     "_default": {
-      "http-api-url":   "https://${host}/api",
-      "http-api-insecure": true,
+      "http-api-url":   "https://${host}:443/external/api",
+      "user":           "admin@blynk.cc",
+      "pass":           "admin",
       "hw-port-tcp":    80,
       "hw-port-ssl":    443
     },
     "Blynk": {
-      "host":           "blynk-cloud.com"
+      "host":           "blynk-cloud.com",
+      "http-api-url":   "https://${host}/api",
+      "http-api-insecure": true
     }
   },
   "default": {
