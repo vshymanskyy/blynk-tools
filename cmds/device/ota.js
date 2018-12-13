@@ -38,6 +38,10 @@ module.exports = {
         secure: {
           type: 'boolean',
           default: true,
+        },
+        force: {
+          type: 'boolean',
+          default: false,
         }
       })
       .demandOption(['device'])
@@ -68,7 +72,10 @@ async function main(argv) {
   const jar = await api.getSessionCookieJar(server, server.user, server.pass);
 
   // Start OTA
-  const res = await api.startOTA(server, device, jar, argv.firmware, { isSecure: argv.secure });
+  const res = await api.startOTA(server, device, jar, argv.firmware, {
+    isSecure: argv.secure,
+    force:    argv.force,
+  });
 
   spinner.stop();
 
